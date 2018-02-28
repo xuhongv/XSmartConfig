@@ -3,7 +3,8 @@
 </p>
  
  
-CSDN传送门：http://blog.csdn.net/xh870189248/article/details/79328257
+
+----------
 
 ### 一. 前言。
 
@@ -133,3 +134,10 @@ CSDN传送门：http://blog.csdn.net/xh870189248/article/details/79328257
 
 
 ----------
+
+- Jar包下载：https://github.com/xuhongv/XSmartConfig-master/raw/master/Asset/XSmartConfig_V1.0.jar
+
+- **APK下载体验**：
+
+![等等](https://raw.githubusercontent.com/xuhongv/XSmartConfig-master/master/Asset/app_V1.png)
+
