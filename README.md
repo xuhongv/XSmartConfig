@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../Asset/xSmartConfig.png" width="520px" height="300px" alt="Banner" />
+  <img src="https://raw.githubusercontent.com/xuhongv/XSmartConfig-master/master/Asset/xSmartConfig.png" width="520px" height="300px" alt="Banner" />
 </p>
  
 ####
