@@ -32,14 +32,14 @@
 ----------
 
 - ①、所需的权限：
-
-    `<uses-permission android:name="android.permission.INTERNET" />
+ ```
+ <uses-permission android:name="android.permission.INTERNET" />
  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
  <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
- <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />`
-
-
+ <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+ 
+ ```
 ----------
 
  - ②、xEspTouchTask.java 类，是对外的API接口。<font color =red >**详细使用方法，请到Demo查看。**</font>
