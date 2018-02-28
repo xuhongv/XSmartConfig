@@ -2,6 +2,8 @@
   <img src="https://raw.githubusercontent.com/xuhongv/XSmartConfig-master/master/Asset/xSmartConfig.png" width="520px" height="300px" alt="Banner" />
 </p>
  
+ 
+CSDN传送门：http://blog.csdn.net/xh870189248/article/details/79328257
 
 ### 一. 前言。
 
@@ -19,7 +21,7 @@
 
 - ③、支持隐藏的SSID配网。
 
-- <font color =red >**④、目前V1.0版本仅仅支持配网成功后的UDP回调接收，具体的协议请自定义。 **</font>
+- ④、目前V1.0版本仅仅支持配网成功后的UDP回调接收，具体的协议请自定义。
 
 ----------
 ### ③. 集成方法与使用。
