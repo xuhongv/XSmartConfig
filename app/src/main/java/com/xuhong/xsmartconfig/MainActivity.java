@@ -1,7 +1,12 @@
 package com.xuhong.xsmartconfig;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,11 +19,15 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xuhong.xsmartconfiglib.api.xEspTouchTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,13 +44,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //ui
     private ProgressDialog dialog;
 
+    private static final int REQUEST_CODE = 205;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
+        checkPermission();
     }
+
+
+    private void checkPermission() {
+        //是否大于6.0版本
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //检查是否已经授权
+            int Code_ACCESS_FINE_LOCATION = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+            int Code_ACCESS_COARSE_LOCATION = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+            //授权结果判断
+            if (Code_ACCESS_FINE_LOCATION != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+            } else if (Code_ACCESS_COARSE_LOCATION != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE);
+            } else {
+                initView();
+            }
+        } else {
+            initView();
+        }
+    }
+
 
     private void initView() {
         mWifiAdmin = new WifiAdminUtils(this);
@@ -95,12 +126,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String apSsid = mWifiAdmin.getWifiConnectedSsid();
         if (apSsid != null) {
             mTvApSsid.setText(apSsid);
+            //保存在本地: ssid作为键  pas作为数值
+            String password = SharedPreferencesUtils.getString(this, apSsid, "");
         } else {
             mTvApSsid.setText("");
         }
+        //保存在本地: ssid作为键  pas作为数值
+        String password = SharedPreferencesUtils.getString(this, apSsid, "");
+        mEdtApPassword.setText(password);
         // check whether the wifi is connected
         boolean isApSsidEmpty = TextUtils.isEmpty(apSsid);
         btAdd.setEnabled(!isApSsidEmpty);
+
+
     }
 
     @Override
@@ -113,6 +151,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setPassWord(apPassword)
                     .creat();
             startSmartConfig();
+
+            //保存在本地: ssid作为键  pas作为数值
+            SharedPreferencesUtils.putString(this, apSsid, apPassword);
+
         }
 
         dialog = new ProgressDialog(MainActivity.this);
@@ -200,6 +242,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE) {
+            if (grantResults.length > 0) {
+                List<String> deniedPermission = new ArrayList<>();
+                for (int i = 0; i < grantResults.length; i++) {
+                    int grantResult = grantResults[i];
+                    String permission = permissions[i];
+                    if (grantResult != PackageManager.PERMISSION_GRANTED) {
+                        deniedPermission.add(permission);
+                    }
+                }
+                if (deniedPermission.isEmpty()) {
+                    initView();
+                } else {
+                    Toast.makeText(this, "您拒绝了部分权限！可以在设置—应用详情授权，否则无法搜索wifi名字哦。", Toast.LENGTH_LONG).show();
+                    initView();
+                }
+
+            }
+        }
     }
 
 }

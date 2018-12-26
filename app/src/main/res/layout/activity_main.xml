@@ -105,4 +105,13 @@
     </RelativeLayout>
 
 
+
+    <TextView
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        android:text="    1、在乐鑫SDK上二次修改，支持配网回调自定义信息回调。\n    2、需要设备二次开发配合，更多信息请到下面仓库浏览！\n    3、源码下载：https://github.com/xuhongv/XSmartConfig\n "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+
 </LinearLayout>
