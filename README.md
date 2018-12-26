@@ -142,6 +142,6 @@
 - Jar包下载：https://github.com/xuhongv/XSmartConfig-master/raw/master/Asset/XSmartConfig_V1.0.jar
 
 - **APK下载体验**：
-
-![等等](https://raw.githubusercontent.com/xuhongv/XSmartConfig-master/master/Asset/app_V1.png)
+- 如果你已经安装，请先卸载原来版本，因为签名不一样！
+> https://github.com/xuhongv/XSmartConfig/raw/master/Asset/xSmartConfig_V1.1.apk
 
