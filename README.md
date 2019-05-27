@@ -16,6 +16,10 @@
 * 适配安卓9.0系统，修复 无法获取 ssid 缺陷！
 * 新增保存每次配网的密码在本地！
 
+#### V1.2
+
+* 同步乐鑫官网最新SDK版本，TAG为：`2effbed`
+
 ----------
 
 ### 一. 前言。
@@ -139,9 +143,9 @@
 
 ----------
 
-- Jar包下载：https://github.com/xuhongv/XSmartConfig-master/raw/master/Asset/XSmartConfig_V1.0.jar
+- Jar包下载 ( 1.2 版本)：https://github.com/xuhongv/XSmartConfig-master/raw/master/Asset/XSmartConfig_V1.2.jar
 
 - **APK下载体验**：
 - 如果你已经安装，请先卸载原来版本，因为签名不一样！
-> https://github.com/xuhongv/XSmartConfig/raw/master/Asset/xSmartConfig_V1.1.apk
+> https://github.com/xuhongv/XSmartConfig/raw/master/Asset/xSmartConfig_V1.2.apk
 
