@@ -294,14 +294,13 @@ public class xEspTouchTask {
                     channel.configureBlocking(false);
                     channel.socket().setReuseAddress(false);
                     channel.socket().bind(new InetSocketAddress(port));
-
                     selector = Selector.open();
                     channel.register(selector, SelectionKey.OP_READ);
                 } catch (IOException e) {
                     e.printStackTrace();
 
                 }
-                ByteBuffer byteBuffer = ByteBuffer.allocate(640);
+                ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
                 while (isReceive) {
                     try {
                         if (selector == null) {
@@ -325,7 +324,6 @@ public class xEspTouchTask {
                                         message1.obj = message;
                                         mHandler.sendMessage(message1);
                                     }
-
                                 }
                             }
                         }
